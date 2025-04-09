@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.comprasapp.R
 import com.example.comprasapp.databinding.FragmentHomeBinding
+import com.example.comprasapp.util.BaseFragment
 
 
 /**
@@ -15,22 +17,17 @@ import com.example.comprasapp.databinding.FragmentHomeBinding
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun inflateBinding(
+        inflater: LayoutInflater, container: ViewGroup?
+    ) = FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.qrButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_qrScanFragment)
         }
@@ -38,10 +35,4 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }

@@ -5,29 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.comprasapp.R
 import com.example.comprasapp.databinding.FragmentDetailBinding
+import com.example.comprasapp.util.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  * Use the [DetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DetailFragment : Fragment() {
-    private var _binding: FragmentDetailBinding? = null
-    private val binding get() = _binding!!
+class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
-    override fun onCreateView(
+    override fun inflateBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        container: ViewGroup?
+    ) = FragmentDetailBinding.inflate(inflater, container, false)
 
-        return binding.root
-    }
-
+    private val viewModel: DetailViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,10 +31,4 @@ class DetailFragment : Fragment() {
             findNavController().navigate(R.id.action_detailFragment_to_paymentFragment)
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }

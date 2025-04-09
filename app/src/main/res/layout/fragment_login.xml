@@ -15,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="0dp"
@@ -26,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp" />
-
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
@@ -36,5 +34,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

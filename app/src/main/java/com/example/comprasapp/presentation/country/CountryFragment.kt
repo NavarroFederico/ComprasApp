@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.comprasapp.R
 import com.example.comprasapp.databinding.FragmentCountryBinding
+import com.example.comprasapp.util.BaseFragment
 
 
 /**
@@ -15,19 +16,13 @@ import com.example.comprasapp.databinding.FragmentCountryBinding
  * Use the [CountryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CountryFragment : Fragment() {
-    private var _binding: FragmentCountryBinding? = null
-    private val binding get() = _binding!!
+class CountryFragment : BaseFragment<FragmentCountryBinding>() {
 
-    override fun onCreateView(
+    override fun inflateBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentCountryBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
-    }
+        container: ViewGroup?
+    ) = FragmentCountryBinding.inflate(inflater, container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

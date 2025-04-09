@@ -1,33 +1,23 @@
 package com.example.comprasapp.presentation.scanner
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.comprasapp.databinding.FragmentQRScanBinding
+import com.example.comprasapp.util.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  * Use the [QRScanFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class QRScanFragment : Fragment() {
-    private var _binding: FragmentQRScanBinding? = null
-    private val binding get() = _binding!!
+class QRScanFragment : BaseFragment<FragmentQRScanBinding>() {
 
-    override fun onCreateView(
+    private val viewModel: QRScanViewModel by viewModels()
+    override fun inflateBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentQRScanBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+        container: ViewGroup?
+    ) = FragmentQRScanBinding.inflate(inflater, container, false)
 
 }

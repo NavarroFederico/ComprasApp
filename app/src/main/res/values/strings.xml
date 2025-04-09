@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ComprasApp</string>
+    <string name="username_field_description">Usuario</string>
+    <string name="password_field_description">Contraseña</string>
 </resources>

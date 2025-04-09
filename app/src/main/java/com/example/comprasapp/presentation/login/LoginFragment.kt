@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.comprasapp.R
 import com.example.comprasapp.databinding.FragmentLoginBinding
+import com.example.comprasapp.util.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -16,39 +19,31 @@ import com.example.comprasapp.databinding.FragmentLoginBinding
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class LoginFragment : BaseFragment<FragmentLoginBinding>() {
+
+    private val viewModel: LoginViewModel by viewModels()
+
+    override fun inflateBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentLoginBinding.inflate(inflater, container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loginButton.setOnClickListener {
 
+        binding.loginButton.setOnClickListener {
             val user = binding.usernameEditText.text.toString()
             val pass = binding.passwordEditText.text.toString()
-
-            if (user == "usuario" && pass == "contraseña") {
-
+            viewModel.login(user, pass)
+        }
+        viewModel.loginState.observe(viewLifecycleOwner) { loginSuccess ->
+            if (loginSuccess) {
                 findNavController().navigate(R.id.action_loginFragment_to_countryFragment)
             } else {
                 Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-
             }
+
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }
