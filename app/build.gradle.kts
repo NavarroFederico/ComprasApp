@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.navigationSafeArgs)
 }
 
 android {
@@ -69,5 +70,8 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+
+    // Coil
+    implementation ("io.coil-kt:coil:2.4.0")
 
 }

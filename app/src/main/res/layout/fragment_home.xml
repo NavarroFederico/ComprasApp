@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Ejemplo de banner de producto destacado -->
-    <ImageView
-        android:id="@+id/productBanner"
+    <!-- RecyclerView horizontal para productos destacados -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productsRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_launcher_background"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/qrButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Botón para ir al flujo de QR -->
+    <!-- Botón para iniciar escaneo QR -->
     <Button
         android:id="@+id/qrButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Escanear QR"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productBanner" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

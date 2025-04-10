@@ -28,7 +28,6 @@
         android:id="@+id/homeFragment"
         android:name="com.example.comprasapp.presentation.home.HomeFragment"
         android:label="Home">
-        <!-- Puedes añadir acciones para navegar a otras pantallas, como Detalle, QR, etc. -->
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -42,6 +41,10 @@
         android:id="@+id/detailFragment"
         android:name="com.example.comprasapp.presentation.productodetail.DetailFragment"
         android:label="Detalle del Producto">
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_detailFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
@@ -50,7 +53,7 @@
     <!-- Pantalla de Escaneo QR -->
     <fragment
         android:id="@+id/qrScanFragment"
-        android:name="com.example.comprasapp.presentation.scanner.QRScanFragment"
+        android:name="com.example.comprasapp.presentation.scanner.QrScanFragment"
         android:label="Escanear QR">
         <action
             android:id="@+id/action_qrScanFragment_to_detailFragment"
@@ -61,5 +64,15 @@
     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.example.comprasapp.presentation.payment.PaymentFragment"
-        android:label="Pago" />
+        android:label="Pago">
+
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_paymentFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+
+    </fragment>
 </navigation>

@@ -2,18 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_qr_scan"
+    android:id="@+id/qrScanLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="24dp">
 
-    <!-- Aquí integrar la vista de la cámara para escanear -->
     <TextView
-        android:id="@+id/tvQrScan"
+        android:id="@+id/instructionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Escanea el código QR de un producto para comenzar el proceso de compra."
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scanQrButton"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/scanQrButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Implementa el escaneo de QR aquí"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="Escanear QR"
+        app:layout_constraintTop_toBottomOf="@id/instructionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
